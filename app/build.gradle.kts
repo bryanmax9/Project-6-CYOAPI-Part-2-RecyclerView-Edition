@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -13,6 +14,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,7 +38,11 @@ android {
 }
 
 dependencies {
-
+    implementation("com.android.support:multidex:1.0.3")
+    implementation("com.github.bumptech.glide:glide:4.12.0") // Glide for image loading
+    kapt("com.github.bumptech.glide:compiler:4.12.0") // Glide compiler for annotation processing
+    implementation("androidx.recyclerview:recyclerview:1.2.1") // RecyclerView for list handling
+    implementation("com.codepath.libraries:asynchttpclient:2.2.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
